@@ -52,6 +52,6 @@ function handleResponse(response) {
 function addQuoteToDom(quote) {
   console.log('Adding Sarah to page:');
 
-  const quoteContainer = document.getElementById('quote-container');
-  quoteContainer.innerText = 'Sarah';
+  const nameContainer = document.getElementById('name-container');
+  nameContainer.innerText = 'Sarah';
 }
