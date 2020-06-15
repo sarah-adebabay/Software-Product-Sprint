@@ -14,6 +14,9 @@
 
 package com.google.sps.servlets;
 
+import com.google.appengine.api.datastore.DatastoreService;
+import com.google.appengine.api.datastore.DatastoreServiceFactory;
+import com.google.appengine.api.datastore.Entity;
 import java.io.IOException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -42,16 +45,25 @@ private List<String> comments;
 
   @Override
   public void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException {
-     // Get the input from the form.
-    String commentLeft = getCommentLeft(request);
+    DatastoreService datastore = DatastoreServiceFactory.getDatastoreService();
+    String comment = getCommentLeft(request);
     //Warn about invalid comment
-    if (commentLeft != null) {
-        comments.add(commentLeft);
+    if (comment == null) {
+        // response.setContentType("text/html");
+        // response.getWriter().println("Please enter a valid comment");
     } else {
+        comments.add(comment);
+        long timestamp = System.currentTimeMillis();
 
+        Entity taskEntity = new Entity("Comment");
+        taskEntity.setProperty("comment", comment);
+        taskEntity.setProperty("timestamp", timestamp);
+
+        datastore.put(taskEntity);
+
+        // Redirect back to the HTML page.
+        response.sendRedirect("/index.html");
     }
-    // Redirect back to the HTML page.
-    response.sendRedirect("/index.html");
   }
 
   /** Returns the choice entered by the player, or -1 if the choice was invalid. */
