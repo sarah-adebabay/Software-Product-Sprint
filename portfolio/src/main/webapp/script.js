@@ -53,5 +53,42 @@ function addQuoteToDom(quote) {
   console.log('Adding Sarah to page:');
 
   const nameContainer = document.getElementById('name-container');
-  nameContainer.innerText = 'Hello, Sarah';
+  
+  nameContainer.innerText = fetch('/my-data-url')  // sends a request to /my-data-url
+.then(response => response.json()) // parses the response as JSON
+.then((myObject) => { // now we can reference the fields in myObject!
+  console.log(myObject.x);
+  console.log(myObject.y);
+  console.log(myObject.z);
+});;
 }
+
+function getComments() {
+    console.log('Getting Comments');
+    // The fetch() function returns a Promise because the request is asynchronous.
+    const responsePromise = fetch('/data');
+    // When the request is complete, pass the response into handleResponse().
+    responsePromise.then(handleResponse);
+}   
+
+function handleResponse(response) {
+    console.log('Handling the response.');
+
+    // response.text() returns a Promise, because the response is a stream of
+    // content and not a simple variable.
+    const textPromise = response.text();
+
+    // When the response is converted to text, pass the result into the
+    // addQuoteToDom() function.
+    textPromise.then(addCommentToDom);
+}
+
+/** Adds a random quote to the DOM. */
+function addCommentToDom(comment) {
+  console.log('Adding comments to page:');
+
+  const nameContainer = document.getElementById('comments-container');
+  nameContainer.innerText = comment;
+}
+
+
