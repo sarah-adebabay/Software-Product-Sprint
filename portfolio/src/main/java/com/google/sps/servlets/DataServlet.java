@@ -31,17 +31,40 @@ private List<String> comments;
   @Override
   public void init() {
     comments = new ArrayList<>();
-    comments.add("First");
-    comments.add("Second");
-    comments.add("Third");
   }
 
   @Override
   public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException {
     String commentJson = convertToJson(comments);
-
     response.setContentType("text/html;");
     response.getWriter().println(commentJson);
+  }
+
+  @Override
+  public void doPost(HttpServletRequest request, HttpServletResponse response) throws IOException {
+     // Get the input from the form.
+    String commentLeft = getCommentLeft(request);
+    //Warn about invalid comment
+    if (commentLeft != null) {
+        comments.add(commentLeft);
+    } else {
+
+    }
+    // Redirect back to the HTML page.
+    response.sendRedirect("/index.html");
+  }
+
+  /** Returns the choice entered by the player, or -1 if the choice was invalid. */
+  private String getCommentLeft(HttpServletRequest request) {
+    // Get the input from the form.
+    String commentLeftString = request.getParameter("comment-left");
+    
+    // Check for a valid input.
+    if (commentLeftString.equals("")) {
+        return null;
+    } else{
+       return commentLeftString; 
+    }
   }
 
   /**
@@ -50,11 +73,12 @@ private List<String> comments;
   private String convertToJson(List<String> arr) {
     String json = "{";
     json += "\"comments\": ";
-    json += arr.get(0);
-    json += ", ";
-    json += arr.get(1);
-    json += ", ";
-    json += arr.get(1);
+    for (int i=0; i < arr.size(); i++) {
+        json += arr.get(i);
+        if (i < arr.size()- 1) {
+            json += ", ";
+        }
+    }
     json += "}";
     System.out.println(json);
     return json;
