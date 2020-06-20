@@ -54,16 +54,8 @@ function handleNameResponse(response) {
 /** Adds a random quote to the DOM. */
 function addQuoteToDom(quote) {
   console.log('Adding Sarah to page:');
-
   const nameContainer = document.getElementById('name-container');
-  
-  nameContainer.innerText = fetch('/my-data-url')  // sends a request to /my-data-url
-    .then(response => response.json()) // parses the response as JSON
-    .then((myObject) => { // now we can reference the fields in myObject!
-    console.log(myObject.x);
-    console.log(myObject.y);
-    console.log(myObject.z);
-    });;
+  nameContainer.innerText = 'Hi ;) - Sarah';
 }
 
 /**
