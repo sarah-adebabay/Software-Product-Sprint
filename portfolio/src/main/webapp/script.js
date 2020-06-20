@@ -27,3 +27,67 @@ function addRandomGreeting() {
   const greetingContainer = document.getElementById('greeting-container');
   greetingContainer.innerText = greeting;
 }
+
+/**
+ * Adds my name to the page.
+ */
+function getName() {
+    console.log('Getting Name');
+    // The fetch() function returns a Promise because the request is asynchronous.
+    const responsePromise = fetch('/data');
+    // When the request is complete, pass the response into handleResponse().
+    responsePromise.then(handleNameResponse);
+}   
+
+function handleNameResponse(response) {
+    console.log('Handling the response.');
+
+    // response.text() returns a Promise, because the response is a stream of
+    // content and not a simple variable.
+    const textPromise = response.text();
+
+    // When the response is converted to text, pass the result into the
+    // addQuoteToDom() function.
+    textPromise.then(addQuoteToDom);
+}
+
+/** Adds a random quote to the DOM. */
+function addQuoteToDom(quote) {
+  console.log('Adding Sarah to page:');
+  const nameContainer = document.getElementById('name-container');
+  nameContainer.innerText = 'Hi ;) - Sarah';
+}
+
+/**
+ * Gets the comments to display to the page.
+ */
+function getComments() {
+    console.log('Getting Comments');
+    // The fetch() function returns a Promise because the request is asynchronous.
+    const responsePromise = fetch('/data');
+    // When the request is complete, pass the response into handleResponse().
+    responsePromise.then(handleResponse);
+}   
+
+function handleResponse(response) {
+    console.log('Handling the response.');
+
+    // response.text() returns a Promise, because the response is a stream of
+    // content and not a simple variable.
+    const textPromise = response.text();
+
+    // When the response is converted to text, pass the result into the
+    // addQuoteToDom() function.
+    textPromise.then(addCommentToDom);
+}
+
+/** Adds a random quote to the DOM. */
+function addCommentToDom(comment) {
+  console.log('Adding comments to page:');
+  const nameContainer = document.getElementById('comments-container');
+  nameContainer.innerText = comment;
+}
+
+
+
+
