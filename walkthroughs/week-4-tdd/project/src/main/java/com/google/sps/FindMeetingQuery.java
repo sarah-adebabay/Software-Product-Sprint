@@ -20,4 +20,41 @@ public final class FindMeetingQuery {
   public Collection<TimeRange> query(Collection<Event> events, MeetingRequest request) {
     throw new UnsupportedOperationException("TODO: Implement this method.");
   }
+
+  public eventSplitsRestriction(FindMeetingQuery request) {
+
+  }
+  public overlappingEvents(com.google.sps.FindMeetingQueryTest){
+
+  } 
+
+  public notEnoughRoom(com.google.sps.FindMeetingQueryTest){
+
+  }
+  public justEnoughRoom(com.google.sps.FindMeetingQueryTest){
+
+  }
+  
+  public ignoresPeopleNotAttending(com.google.sps.FindMeetingQueryTest){
+
+  }
+  public noOptionsForTooLongOfARequest(com.google.sps.FindMeetingQueryTest){
+
+  }
+  
+  public everyAttendeeIsConsidered(com.google.sps.FindMeetingQueryTest){
+
+  }
+  public nestedEvents(com.google.sps.FindMeetingQueryTest){
+
+  }
+  public optionsForNoAttendees(com.google.sps.FindMeetingQueryTest){
+
+  }
+  public noConflicts(com.google.sps.FindMeetingQueryTest){
+      
+  }
+  public doubleBookedPeople(com.google.sps.FindMeetingQueryTest){
+
+  }
 }
