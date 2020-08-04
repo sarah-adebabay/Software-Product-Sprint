@@ -21,40 +21,48 @@ public final class FindMeetingQuery {
     throw new UnsupportedOperationException("TODO: Implement this method.");
   }
 
-  public eventSplitsRestriction(FindMeetingQuery request) {
-
+  public Collection<TimeRange> eventSplitsRestriction(FindMeetingQuery request) {
+      return new Collection<TimeRange>();
   }
-  public overlappingEvents(com.google.sps.FindMeetingQueryTest){
 
+  public Collection<TimeRange> overlappingEvents(FindMeetingQuery request){
+      return new Collection<TimeRange>();
   } 
 
-  public notEnoughRoom(com.google.sps.FindMeetingQueryTest){
+  public Collection<TimeRange> notEnoughRoom(FindMeetingQuery request){
+      return new Collection<TimeRange>();
+  }
+  public Collection<TimeRange> justEnoughRoom(FindMeetingQuery request){
+      return new Collection<TimeRange>();
+  }
+  
+  public Collection<TimeRange> ignoresPeopleNotAttending(FindMeetingQuery request){
+      return new Collection<TimeRange>();
 
   }
-  public justEnoughRoom(com.google.sps.FindMeetingQueryTest){
+  public Collection<TimeRange> noOptionsForTooLongOfARequest(FindMeetingQuery request){
+      return new Collection<TimeRange>();
 
   }
   
-  public ignoresPeopleNotAttending(com.google.sps.FindMeetingQueryTest){
+  public Collection<TimeRange> everyAttendeeIsConsidered(FindMeetingQuery request){
+      return new Collection<TimeRange>();
 
   }
-  public noOptionsForTooLongOfARequest(com.google.sps.FindMeetingQueryTest){
+  public Collection<TimeRange> nestedEvents(FindMeetingQuery request){
+      return new Collection<TimeRange>();
 
   }
-  
-  public everyAttendeeIsConsidered(com.google.sps.FindMeetingQueryTest){
+  public Collection<TimeRange> optionsForNoAttendees(FindMeetingQuery request){
+      return new Collection<TimeRange>();
 
   }
-  public nestedEvents(com.google.sps.FindMeetingQueryTest){
-
-  }
-  public optionsForNoAttendees(com.google.sps.FindMeetingQueryTest){
-
-  }
-  public noConflicts(com.google.sps.FindMeetingQueryTest){
+  public Collection<TimeRange> noConflicts(FindMeetingQuery request){
+      return new Collection<TimeRange>();
       
   }
-  public doubleBookedPeople(com.google.sps.FindMeetingQueryTest){
+  public Collection<TimeRange> doubleBookedPeople(FindMeetingQuery request){
+      return new Collection<TimeRange> ();
 
   }
 }
